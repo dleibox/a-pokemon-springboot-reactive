@@ -1,0 +1,22 @@
+app:
+  title: A Pokemon Microservice
+  description: A Spring Boot Pokemon Reactive Services
+  version: 1.0.0
+  license:
+    - MIT
+    - url: https://opensource.org/licenses/MIT
+  contact:
+    name: Daniel Lei
+    email: dleibox@gmail.com
+    url: http://dlei.ca
+
+logging:
+  level:
+    org.springframework: INFO
+    org.springframework.data.r2dbc: DEBUG
+    a.springboot.pokemon: DEBUG
+  file:
+    name: /_log/a.log
+
+service:
+  base-url: https://pokeapi.co/api/v2
