@@ -15,7 +15,6 @@ import a.springboot.pokemon.reactive.service.model.AbilityDetail;
 import a.springboot.pokemon.reactive.service.model.PokemonDetail;
 import a.springboot.pokemon.reactive.service.model.PokemonResponse;
 import a.springboot.pokemon.reactive.service.service.APokemonService;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @CrossOrigin
@@ -29,10 +28,10 @@ public class APokemonController {
 	private APokemonService service;
 
 	@GetMapping("/pokemon")
-	public ResponseEntity<Flux<PokemonResponse>> getAllPokemons() {
+	public ResponseEntity<Mono<PokemonResponse>> getAllPokemons() {
 		log.info("[ getAllPokemons ]");
 //		return this.service.getAllPokemons().map(x -> ResponseEntity.ok(x));
-		return new ResponseEntity<>(this.service.getAllPokemons(), HttpStatus.OK);
+		return new ResponseEntity<>(this.service.getAllPokemons().next(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/pokemon/{id}")
